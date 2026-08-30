@@ -21,7 +21,7 @@ export default function ContactSection() {
     subject: "Engineering Engagement & Architecture",
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "activation_needed" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [submittedData, setSubmittedData] = useState<{
     name: string;
@@ -78,7 +78,22 @@ export default function ContactSection() {
         }),
       });
 
-      if (response.ok) {
+      const data = await response.json().catch(() => null);
+
+      if (data && (data.success === "true" || data.success === true)) {
+        setSubmittedData({ ...formData });
+        setStatus("success");
+        setFormData({
+          name: "",
+          email: "",
+          subject: "Engineering Engagement & Architecture",
+          message: "",
+        });
+      } else if (data && data.message && data.message.toLowerCase().includes("activation")) {
+        setSubmittedData({ ...formData });
+        setStatus("activation_needed");
+        setErrorMessage(data.message);
+      } else if (response.ok) {
         setSubmittedData({ ...formData });
         setStatus("success");
         setFormData({
@@ -88,7 +103,7 @@ export default function ContactSection() {
           message: "",
         });
       } else {
-        throw new Error("Transmission dispatch failed via network gateway.");
+        throw new Error((data && data.message) || "Transmission dispatch failed via network gateway.");
       }
     } catch (err: unknown) {
       console.error("Form submission error:", err);
@@ -261,7 +276,52 @@ export default function ContactSection() {
               </span>
             </div>
 
-            {status === "success" ? (
+            {status === "activation_needed" ? (
+              <div className="py-12 text-center space-y-4 animate-fadeIn">
+                <div className="w-16 h-16 rounded-full bg-blue-50 dark:bg-blue-950/80 text-[#2d68c4] dark:text-[#60a5fa] border border-blue-200 dark:border-blue-700 flex items-center justify-center mx-auto text-2xl font-bold">
+                  ✉️
+                </div>
+                <h4 className="text-2xl font-light text-[#0a0f18] dark:text-white">
+                  Action Required: Activate Inquiries
+                </h4>
+                <p className="text-sm text-[#0a0f18] dark:text-white max-w-lg mx-auto font-light opacity-90 leading-relaxed">
+                  FormSubmit sent a one-time verification link to <strong className="font-semibold text-[#2d68c4] dark:text-[#60a5fa]">{PORTFOLIO_DATA.profile.email}</strong>. Please check your <strong>Gmail Inbox / Spam folder</strong> for an email from FormSubmit and click <em>&ldquo;Activate Form&rdquo;</em>.
+                </p>
+
+                {submittedData && (
+                  <div className="my-4 p-4 max-w-md mx-auto rounded-2xl bg-[#edf5ff] dark:bg-slate-800/80 border border-[#0a0f18]/10 dark:border-white/10 text-left font-mono text-xs space-y-1.5">
+                    <div className="text-[#2d68c4] dark:text-[#60a5fa] font-bold">INQUIRY SAVED LOCALLY:</div>
+                    <div className="text-[#0a0f18] dark:text-slate-200 truncate"><strong>Sender:</strong> {submittedData.name} ({submittedData.email})</div>
+                    <div className="text-[#0a0f18] dark:text-slate-200 truncate"><strong>Scope:</strong> {submittedData.subject}</div>
+                    <div className="text-[#0a0f18] dark:text-slate-200 truncate"><strong>Message:</strong> {submittedData.message}</div>
+                  </div>
+                )}
+
+                <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+                  <a
+                    href={`https://wa.me/917566221905?text=${encodeURIComponent(
+                      `Hi Indresh, here is my inquiry:\nName: ${submittedData?.name || ""}\nEmail: ${submittedData?.email || ""}\nSubject: ${submittedData?.subject || ""}\n\nMessage: ${submittedData?.message || ""}`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="pill-button-primary font-mono text-xs uppercase tracking-wider px-5 py-2.5 rounded-full inline-flex items-center gap-2 text-white cursor-pointer"
+                  >
+                    <WhatsAppIcon className="w-4 h-4" />
+                    <span>Send via WhatsApp</span>
+                  </a>
+
+                  <button
+                    onClick={() => {
+                      setStatus("idle");
+                      setSubmittedData(null);
+                    }}
+                    className="pill-button font-mono text-xs uppercase tracking-wider px-5 py-2.5 rounded-full inline-block text-[#0a0f18] dark:text-white cursor-pointer"
+                  >
+                    Back to Form
+                  </button>
+                </div>
+              </div>
+            ) : status === "success" ? (
               <div className="py-12 text-center space-y-4 animate-fadeIn">
                 <div className="w-16 h-16 rounded-full bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-700 flex items-center justify-center mx-auto text-2xl font-bold">
                   ✓
