@@ -251,11 +251,11 @@ export default function GlassHero() {
           </a>
 
           {/* Desktop Links (Hidden on Mobile) */}
-          <div className="hidden md:flex items-center gap-5 lg:gap-7">
+          <div className="hidden md:flex items-center gap-5 lg:gap-7 px-5 py-2 rounded-full bg-white/70 dark:bg-[#070b12]/70 backdrop-blur-md border border-[#0a0f18]/10 dark:border-white/10 shadow-sm">
             <a
               href="#about"
               onClick={(e) => handleScrollTo(e, "about")}
-              className="font-mono text-xs uppercase tracking-wider text-[#0a0f18] dark:text-white hover:opacity-70 transition-opacity py-2 px-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0a0f18] dark:focus-visible:outline-white rounded font-medium"
+              className="font-mono text-xs uppercase tracking-wider text-[#0a0f18] dark:text-white hover:opacity-70 transition-opacity py-1 px-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0a0f18] dark:focus-visible:outline-white rounded font-medium"
             >
               About
             </a>
@@ -263,7 +263,7 @@ export default function GlassHero() {
             <a
               href="#timeline"
               onClick={(e) => handleScrollTo(e, "timeline")}
-              className="font-mono text-xs uppercase tracking-wider text-[#0a0f18] dark:text-white hover:opacity-70 transition-opacity py-2 px-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0a0f18] dark:focus-visible:outline-white rounded font-medium"
+              className="font-mono text-xs uppercase tracking-wider text-[#0a0f18] dark:text-white hover:opacity-70 transition-opacity py-1 px-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0a0f18] dark:focus-visible:outline-white rounded font-medium"
             >
               Timeline
             </a>
@@ -271,7 +271,7 @@ export default function GlassHero() {
             <a
               href="#work"
               onClick={(e) => handleScrollTo(e, "work")}
-              className="font-mono text-xs uppercase tracking-wider text-[#0a0f18] dark:text-white hover:opacity-70 transition-opacity py-2 px-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0a0f18] dark:focus-visible:outline-white rounded font-medium"
+              className="font-mono text-xs uppercase tracking-wider text-[#0a0f18] dark:text-white hover:opacity-70 transition-opacity py-1 px-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0a0f18] dark:focus-visible:outline-white rounded font-medium"
             >
               Work
             </a>
@@ -279,7 +279,7 @@ export default function GlassHero() {
             <a
               href="#process"
               onClick={(e) => handleScrollTo(e, "process")}
-              className="font-mono text-xs uppercase tracking-wider text-[#0a0f18] dark:text-white hover:opacity-70 transition-opacity py-2 px-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0a0f18] dark:focus-visible:outline-white rounded font-medium"
+              className="font-mono text-xs uppercase tracking-wider text-[#0a0f18] dark:text-white hover:opacity-70 transition-opacity py-1 px-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0a0f18] dark:focus-visible:outline-white rounded font-medium"
             >
               Process
             </a>
@@ -287,7 +287,7 @@ export default function GlassHero() {
             <a
               href="#experiments"
               onClick={(e) => handleScrollTo(e, "experiments")}
-              className="font-mono text-xs uppercase tracking-wider text-[#0a0f18] dark:text-white hover:opacity-70 transition-opacity py-2 px-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0a0f18] dark:focus-visible:outline-white rounded font-medium"
+              className="font-mono text-xs uppercase tracking-wider text-[#0a0f18] dark:text-white hover:opacity-70 transition-opacity py-1 px-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0a0f18] dark:focus-visible:outline-white rounded font-medium"
             >
               Lab
             </a>
@@ -295,7 +295,7 @@ export default function GlassHero() {
             {/* Desktop Resume Print Trigger */}
             <button
               onClick={() => window.print()}
-              className="font-mono text-xs uppercase tracking-wider text-[#0a0f18] dark:text-white hover:opacity-70 transition-opacity py-2 px-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0a0f18] dark:focus-visible:outline-white rounded font-medium cursor-pointer"
+              className="font-mono text-xs uppercase tracking-wider text-[#0a0f18] dark:text-white hover:opacity-70 transition-opacity py-1 px-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0a0f18] dark:focus-visible:outline-white rounded font-medium cursor-pointer"
             >
               Resume [PDF]
             </button>
@@ -307,7 +307,7 @@ export default function GlassHero() {
                 window.dispatchEvent(event);
               }}
               aria-label="Open Command Menu"
-              className="hidden lg:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 dark:bg-white/10 hover:bg-white dark:hover:bg-white/20 text-xs font-mono text-[#0a0f18] dark:text-white transition-colors border border-[#0a0f18]/10 dark:border-white/10"
+              className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/80 dark:bg-white/10 hover:bg-white dark:hover:bg-white/20 text-xs font-mono text-[#0a0f18] dark:text-white transition-colors border border-[#0a0f18]/10 dark:border-white/10"
             >
               <span>⌘K</span>
             </button>
@@ -316,10 +316,10 @@ export default function GlassHero() {
             <button
               onClick={toggleTheme}
               aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-              className="p-2 rounded-full bg-white/80 dark:bg-white/10 hover:bg-white dark:hover:bg-white/20 text-[#0a0f18] dark:text-white transition-colors border border-[#0a0f18]/10 dark:border-white/10"
+              className="p-1.5 rounded-full bg-white/80 dark:bg-white/10 hover:bg-white dark:hover:bg-white/20 text-[#0a0f18] dark:text-white transition-colors border border-[#0a0f18]/10 dark:border-white/10"
             >
               {theme === "dark" ? (
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <circle cx="12" cy="12" r="5" />
                   <line x1="12" y1="1" x2="12" y2="3" />
                   <line x1="12" y1="21" x2="12" y2="23" />
@@ -331,7 +331,7 @@ export default function GlassHero() {
                   <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                 </svg>
               ) : (
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                 </svg>
               )}
@@ -380,9 +380,9 @@ export default function GlassHero() {
       <div className="relative z-20 w-full h-full pointer-events-none flex flex-col justify-between">
         {/* Main Headline */}
         <div
-          className="absolute left-[max(1.25rem,env(safe-area-inset-left,0px))] md:left-[max(5.6vw,2rem)] top-[15%] md:top-[34%] max-w-[92vw] md:max-w-none pointer-events-auto"
+          className="absolute left-[max(1.25rem,env(safe-area-inset-left,0px))] md:left-[max(5.6vw,2rem)] top-[12%] md:top-[34%] max-w-[92vw] md:max-w-none pointer-events-auto"
         >
-          <h1 className="font-light tracking-[-0.075em] md:tracking-[-0.085em] text-[#0a0f18] dark:text-white flex flex-col leading-[0.87] md:leading-[0.93] text-[clamp(2.7rem,12.5vw,3.8rem)] md:text-[clamp(5.4rem,6.2vw,6.8rem)]">
+          <h1 className="font-light tracking-[-0.075em] md:tracking-[-0.085em] text-[#0a0f18] dark:text-white flex flex-col leading-[0.87] md:leading-[0.93] text-[clamp(2.35rem,9.6vw,3.5rem)] md:text-[clamp(5.4rem,6.2vw,6.8rem)]">
             <span className="block overflow-hidden py-0.5">
               <span className="block animate-line-1">Building</span>
             </span>

@@ -109,18 +109,24 @@ body {
 @media (max-width: 767px) {
   .portrait-base {
     background-image: url("/images/Base_image_mobile.png");
+    background-position: center;
+    background-size: cover;
   }
   .portrait-reveal {
     background-image: url("/images/Reveal_image_mobile.png");
+    background-position: center;
+    background-size: cover;
   }
 }
 
 @media (max-width: 767px) and (orientation: landscape) {
   .portrait-base {
     background-image: url("/images/Base_image_desktop.png");
+    background-position: center;
   }
   .portrait-reveal {
     background-image: url("/images/Reveal_image_desktop.png");
+    background-position: center;
   }
 }
 
