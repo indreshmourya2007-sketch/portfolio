@@ -21,7 +21,14 @@ export default function ContactSection() {
     subject: "Engineering Engagement & Architecture",
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "sending" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [submittedData, setSubmittedData] = useState<{
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+  } | null>(null);
 
   // Real-time IST clock
   useEffect(() => {
@@ -47,19 +54,48 @@ export default function ContactSection() {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    setTimeout(() => {
-      setStatus("success");
-      setFormData({
-        name: "",
-        email: "",
-        subject: "Engineering Engagement & Architecture",
-        message: "",
+    setErrorMessage("");
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${PORTFOLIO_DATA.profile.email}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          _subject: `[Portfolio Transmission] ${formData.subject} - from ${formData.name}`,
+          inquiry_scope: formData.subject,
+          message: formData.message,
+          _replyto: formData.email,
+          _template: "table",
+          _captcha: "false",
+        }),
       });
-      setTimeout(() => setStatus("idle"), 5000);
-    }, 900);
+
+      if (response.ok) {
+        setSubmittedData({ ...formData });
+        setStatus("success");
+        setFormData({
+          name: "",
+          email: "",
+          subject: "Engineering Engagement & Architecture",
+          message: "",
+        });
+      } else {
+        throw new Error("Transmission dispatch failed via network gateway.");
+      }
+    } catch (err: unknown) {
+      console.error("Form submission error:", err);
+      setSubmittedData({ ...formData });
+      setStatus("error");
+      setErrorMessage("Direct gateway reached a temporary rate limit or network issue. You can instantly transmit your inquiry via WhatsApp or Email below.");
+    }
   };
 
   const socialIconsMap: Record<string, React.ReactNode> = {
@@ -226,22 +262,89 @@ export default function ContactSection() {
             </div>
 
             {status === "success" ? (
-              <div className="py-16 text-center space-y-4 animate-fadeIn">
+              <div className="py-12 text-center space-y-4 animate-fadeIn">
                 <div className="w-16 h-16 rounded-full bg-emerald-50 dark:bg-emerald-950/80 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-700 flex items-center justify-center mx-auto text-2xl font-bold">
                   ✓
                 </div>
                 <h4 className="text-2xl font-light text-[#0a0f18] dark:text-white">
-                  Transmission Dispatched
+                  Transmission Dispatched Successfully
                 </h4>
-                <p className="text-sm text-[#0a0f18] dark:text-white max-w-md mx-auto font-light opacity-90">
-                  Thank you for reaching out. Your message has been routed to Indresh Mourya. You will receive a response within 24 business hours.
+                <p className="text-sm text-[#0a0f18] dark:text-white max-w-md mx-auto font-light opacity-90 leading-relaxed">
+                  Your message has been securely delivered directly to <strong className="font-semibold text-[#2d68c4] dark:text-[#60a5fa]">{PORTFOLIO_DATA.profile.email}</strong>. Indresh will review your transmission and get back to you within 24 business hours.
                 </p>
-                <button
-                  onClick={() => setStatus("idle")}
-                  className="pill-button font-mono text-xs uppercase tracking-wider px-5 py-2.5 rounded-full inline-block mt-4 text-[#0a0f18] dark:text-white"
-                >
-                  Send another inquiry
-                </button>
+
+                {submittedData && (
+                  <div className="my-4 p-4 max-w-md mx-auto rounded-2xl bg-[#edf5ff] dark:bg-slate-800/80 border border-[#0a0f18]/10 dark:border-white/10 text-left font-mono text-xs space-y-1.5">
+                    <div className="text-[#2d68c4] dark:text-[#60a5fa] font-bold">TRANSMISSION RECEIPT:</div>
+                    <div className="text-[#0a0f18] dark:text-slate-200 truncate"><strong>Sender:</strong> {submittedData.name} ({submittedData.email})</div>
+                    <div className="text-[#0a0f18] dark:text-slate-200 truncate"><strong>Scope:</strong> {submittedData.subject}</div>
+                  </div>
+                )}
+
+                <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+                  <a
+                    href={`https://wa.me/917566221905?text=${encodeURIComponent(
+                      `Hi Indresh, I just submitted an inquiry on your portfolio regarding: ${submittedData?.subject || "Collaboration"}`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="pill-button-primary font-mono text-xs uppercase tracking-wider px-5 py-2.5 rounded-full inline-flex items-center gap-2 text-white cursor-pointer"
+                  >
+                    <WhatsAppIcon className="w-4 h-4" />
+                    <span>Ping on WhatsApp</span>
+                  </a>
+
+                  <button
+                    onClick={() => {
+                      setStatus("idle");
+                      setSubmittedData(null);
+                    }}
+                    className="pill-button font-mono text-xs uppercase tracking-wider px-5 py-2.5 rounded-full inline-block text-[#0a0f18] dark:text-white cursor-pointer"
+                  >
+                    Send another inquiry
+                  </button>
+                </div>
+              </div>
+            ) : status === "error" ? (
+              <div className="py-12 text-center space-y-4 animate-fadeIn">
+                <div className="w-16 h-16 rounded-full bg-amber-50 dark:bg-amber-950/80 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-700 flex items-center justify-center mx-auto text-2xl font-bold">
+                  !
+                </div>
+                <h4 className="text-2xl font-light text-[#0a0f18] dark:text-white">
+                  Direct Gateway Alert
+                </h4>
+                <p className="text-sm text-[#0a0f18] dark:text-white max-w-md mx-auto font-light opacity-90 leading-relaxed">
+                  {errorMessage}
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+                  <a
+                    href={`https://wa.me/917566221905?text=${encodeURIComponent(
+                      `Hi Indresh, my name is ${submittedData?.name || ""}. Subject: ${submittedData?.subject || ""}\n\nMessage: ${submittedData?.message || ""}`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="pill-button-primary font-mono text-xs uppercase tracking-wider px-5 py-2.5 rounded-full inline-flex items-center gap-2 text-white cursor-pointer"
+                  >
+                    <WhatsAppIcon className="w-4 h-4" />
+                    <span>Send via WhatsApp</span>
+                  </a>
+                  <a
+                    href={`mailto:${PORTFOLIO_DATA.profile.email}?subject=${encodeURIComponent(
+                      `[Portfolio Inquiry] ${submittedData?.subject || "Collaboration"}`
+                    )}&body=${encodeURIComponent(
+                      `Name: ${submittedData?.name || ""}\nEmail: ${submittedData?.email || ""}\n\nMessage:\n${submittedData?.message || ""}`
+                    )}`}
+                    className="pill-button font-mono text-xs uppercase tracking-wider px-5 py-2.5 rounded-full inline-flex items-center gap-2 text-[#0a0f18] dark:text-white cursor-pointer"
+                  >
+                    <span>Send via Email Client</span>
+                  </a>
+                  <button
+                    onClick={() => setStatus("idle")}
+                    className="pill-button font-mono text-xs uppercase tracking-wider px-5 py-2.5 rounded-full inline-block text-[#0a0f18] dark:text-white cursor-pointer"
+                  >
+                    Try Again
+                  </button>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="pt-6 space-y-5">
