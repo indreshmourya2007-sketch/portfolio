@@ -57,7 +57,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#070b12",
+  themeColor: "#edf5ff",
 };
 
 export default function RootLayout({
@@ -88,7 +88,7 @@ export default function RootLayout({
             __html: `
               try {
                 const stored = localStorage.getItem('portfolio-theme');
-                if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                if (stored === 'dark') {
                   document.documentElement.classList.add('dark');
                 } else {
                   document.documentElement.classList.remove('dark');
