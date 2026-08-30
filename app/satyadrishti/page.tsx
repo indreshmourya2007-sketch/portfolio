@@ -498,7 +498,7 @@ Verified by SatyaDrishti AI (सत्यदृष्टि) — Seeing the Trut
         </div>
 
         {/* Tab Navigation Navigation Bar */}
-        <div className="flex flex-wrap gap-2 p-1.5 bg-slate-900/90 backdrop-blur-md rounded-2xl border border-white/10">
+        <div className="flex overflow-x-auto sm:flex-wrap gap-2 p-1.5 bg-slate-900/90 backdrop-blur-md rounded-2xl border border-white/10 no-scrollbar scroll-smooth">
           <button
             onClick={() => {
               setActiveTab("news");
@@ -507,7 +507,7 @@ Verified by SatyaDrishti AI (सत्यदृष्टि) — Seeing the Trut
               );
               setScanResult(null);
             }}
-            className={`px-4 py-2.5 rounded-xl font-mono text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer ${
+            className={`px-4 py-2.5 rounded-xl font-mono text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer flex-shrink-0 whitespace-nowrap ${
               activeTab === "news"
                 ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
                 : "text-slate-300 hover:bg-white/10 hover:text-white"
@@ -523,7 +523,7 @@ Verified by SatyaDrishti AI (सत्यदृष्टि) — Seeing the Trut
               );
               setScanResult(null);
             }}
-            className={`px-4 py-2.5 rounded-xl font-mono text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer ${
+            className={`px-4 py-2.5 rounded-xl font-mono text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer flex-shrink-0 whitespace-nowrap ${
               activeTab === "sms"
                 ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
                 : "text-slate-300 hover:bg-white/10 hover:text-white"
@@ -537,7 +537,7 @@ Verified by SatyaDrishti AI (सत्यदृष्टि) — Seeing the Trut
               setInputText("http://free-electric-subsidy-2025.top/claim-now");
               setScanResult(null);
             }}
-            className={`px-4 py-2.5 rounded-xl font-mono text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer ${
+            className={`px-4 py-2.5 rounded-xl font-mono text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer flex-shrink-0 whitespace-nowrap ${
               activeTab === "link"
                 ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
                 : "text-slate-300 hover:bg-white/10 hover:text-white"
@@ -547,7 +547,7 @@ Verified by SatyaDrishti AI (सत्यदृष्टि) — Seeing the Trut
           </button>
           <button
             onClick={() => setActiveTab("voice")}
-            className={`px-4 py-2.5 rounded-xl font-mono text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer ${
+            className={`px-4 py-2.5 rounded-xl font-mono text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer flex-shrink-0 whitespace-nowrap ${
               activeTab === "voice"
                 ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
                 : "text-slate-300 hover:bg-white/10 hover:text-white"
@@ -557,7 +557,7 @@ Verified by SatyaDrishti AI (सत्यदृष्टि) — Seeing the Trut
           </button>
           <button
             onClick={() => setActiveTab("image")}
-            className={`px-4 py-2.5 rounded-xl font-mono text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer ${
+            className={`px-4 py-2.5 rounded-xl font-mono text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer flex-shrink-0 whitespace-nowrap ${
               activeTab === "image"
                 ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
                 : "text-slate-300 hover:bg-white/10 hover:text-white"
@@ -567,7 +567,7 @@ Verified by SatyaDrishti AI (सत्यदृष्टि) — Seeing the Trut
           </button>
           <button
             onClick={() => setActiveTab("quiz")}
-            className={`px-4 py-2.5 rounded-xl font-mono text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer ${
+            className={`px-4 py-2.5 rounded-xl font-mono text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer flex-shrink-0 whitespace-nowrap ${
               activeTab === "quiz"
                 ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
                 : "text-slate-300 hover:bg-white/10 hover:text-white"
@@ -577,7 +577,7 @@ Verified by SatyaDrishti AI (सत्यदृष्टि) — Seeing the Trut
           </button>
           <button
             onClick={() => setActiveTab("awareness")}
-            className={`px-4 py-2.5 rounded-xl font-mono text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer ${
+            className={`px-4 py-2.5 rounded-xl font-mono text-xs font-semibold transition-all flex items-center gap-2 cursor-pointer flex-shrink-0 whitespace-nowrap ${
               activeTab === "awareness"
                 ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
                 : "text-slate-300 hover:bg-white/10 hover:text-white"

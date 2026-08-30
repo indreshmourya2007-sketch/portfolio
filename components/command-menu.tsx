@@ -132,7 +132,7 @@ export default function CommandMenu({ isOpen, onClose, onSelectProject }: Comman
       role="dialog"
       aria-modal="true"
       aria-label="Command Navigation Menu"
-      className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh] px-4 bg-[#0a0f18]/50 dark:bg-black/80 backdrop-blur-md animate-fadeIn"
+      className="fixed inset-0 z-[110] flex items-start justify-center pt-[8vh] sm:pt-[15vh] px-3 sm:px-4 bg-[#0a0f18]/50 dark:bg-black/80 backdrop-blur-md animate-fadeIn"
       onClick={onClose}
     >
       <div

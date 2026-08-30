@@ -186,7 +186,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   <ExternalLinkIcon className="w-3 h-3" />
                 </a>
               </div>
-              <div className="w-full h-[520px] rounded-2xl overflow-hidden border-2 border-[#0a0f18]/15 dark:border-white/20 bg-slate-950 shadow-inner">
+              <div className="w-full h-[400px] sm:h-[480px] md:h-[540px] rounded-2xl overflow-hidden border-2 border-[#0a0f18]/15 dark:border-white/20 bg-slate-950 shadow-inner">
                 <iframe
                   src="https://indreshmourya2007-sketch.github.io/Dr.Decode/"
                   title="Dr. Decode Live Interactive Demo"
@@ -219,7 +219,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   <ExternalLinkIcon className="w-3 h-3" />
                 </a>
               </div>
-              <div className="w-full h-[540px] rounded-2xl overflow-hidden border-2 border-[#0a0f18]/15 dark:border-white/20 bg-slate-950 shadow-inner">
+              <div className="w-full h-[400px] sm:h-[480px] md:h-[540px] rounded-2xl overflow-hidden border-2 border-[#0a0f18]/15 dark:border-white/20 bg-slate-950 shadow-inner">
                 <iframe
                   src="/satyadrishti"
                   title="SatyaDrishti AI Live Interactive Sandbox"
