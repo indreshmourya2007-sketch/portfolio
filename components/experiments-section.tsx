@@ -391,7 +391,7 @@ export default function ExperimentsSection() {
                   {item.date} • Production Ready
                 </span>
                 <a
-                  href={item.link || "https://github.com/indresh-mourya"}
+                  href={item.link || "https://github.com/indreshmourya2007-sketch"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#2d68c4] dark:text-[#60a5fa] font-semibold flex items-center gap-1.5 group-hover:translate-x-1 transition-transform"

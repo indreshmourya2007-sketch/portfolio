@@ -171,24 +171,35 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* 1. Live Interactive Demo Tab for DR. DECODE */}
           {activeTab === "demo" && project.id === "dr-decode" && (
             <div className="space-y-4">
-              <div className="flex items-center justify-between font-mono text-xs text-gray-600 dark:text-gray-300">
+              <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-xs text-gray-600 dark:text-gray-300">
                 <span className="font-bold flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  Live App Sandbox Running: Dr. Decode AI
+                  Live Clinical Intelligence Sandbox: Dr. Decode AI
                 </span>
-                <a
-                  href="https://indreshmourya2007-sketch.github.io/Dr.Decode/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#2d68c4] dark:text-[#60a5fa] hover:underline flex items-center gap-1 font-semibold"
-                >
-                  <span>Open Fullscreen</span>
-                  <ExternalLinkIcon className="w-3 h-3" />
-                </a>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="/drdecode"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold flex items-center gap-1.5 shadow-sm transition-all"
+                  >
+                    <span>🚀 Launch Fullscreen</span>
+                    <ExternalLinkIcon className="w-3 h-3" />
+                  </a>
+                  <a
+                    href="https://indreshmourya2007-sketch.github.io/Dr.Decode/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#2d68c4] dark:text-[#60a5fa] hover:underline flex items-center gap-1 font-semibold"
+                  >
+                    <span>GitHub Pages Site</span>
+                    <ExternalLinkIcon className="w-3 h-3" />
+                  </a>
+                </div>
               </div>
-              <div className="w-full h-[400px] sm:h-[480px] md:h-[540px] rounded-2xl overflow-hidden border-2 border-[#0a0f18]/15 dark:border-white/20 bg-slate-950 shadow-inner">
+              <div className="w-full h-[520px] sm:h-[620px] md:h-[700px] rounded-2xl overflow-hidden border-2 border-[#0a0f18]/15 dark:border-white/20 bg-slate-950 shadow-2xl">
                 <iframe
-                  src="https://indreshmourya2007-sketch.github.io/Dr.Decode/"
+                  src="/drdecode"
                   title="Dr. Decode Live Interactive Demo"
                   className="w-full h-full border-none"
                   allow="camera; microphone; clipboard-read; clipboard-write"
@@ -196,7 +207,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 />
               </div>
               <p className="font-mono text-[11px] text-gray-500 dark:text-gray-400 text-center">
-                💡 Enter a free Groq API key on first launch in the app to test live clinical report analysis & 3D Bio-Core visualizer.
+                🩺 Multi-Modal OCR Biomarker Extraction • 3D DNA Bio-Core Helix • 7 Languages • Doctor Triage
               </p>
             </div>
           )}

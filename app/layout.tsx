@@ -74,9 +74,10 @@ export default function RootLayout({
       "Software Developer and 2nd-year B.Tech CSE Student at PIEMR, Indore.",
     url: "https://indresh.dev",
     sameAs: [
-      "https://github.com/indresh-mourya",
+      "https://github.com/indreshmourya2007-sketch",
       "https://twitter.com/indresh_dev",
-      "https://linkedin.com/in/indresh-mourya",
+      "https://www.linkedin.com/in/indreshmourya",
+      "https://instagram.com/indresh_optimist",
     ],
   };
 

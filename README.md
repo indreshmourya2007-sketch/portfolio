@@ -11,7 +11,7 @@
 
 <br />
 
-[🌐 Live Portfolio](https://github.com/indreshmourya2007-sketch/portfolio) • [🛡️ SatyaDrishti AI](/satyadrishti) • [🩺 Dr. Decode AI](https://indreshmourya2007-sketch.github.io/Dr.Decode/) • [✉️ Get in Touch](mailto:indreshmourya2007@gmail.com)
+[🌐 Live Portfolio](https://github.com/indreshmourya2007-sketch/portfolio) • [🛡️ SatyaDrishti AI](/satyadrishti) • [🩺 Dr. Decode AI](/drdecode) • [✉️ Get in Touch](mailto:indreshmourya2007@gmail.com)
 
 </div>
 
@@ -161,7 +161,8 @@ Portfolio/
 - **👤 Author:** Indresh Mourya
 - **📧 Email:** [indreshmourya2007@gmail.com](mailto:indreshmourya2007@gmail.com)
 - **🐙 GitHub:** [@indreshmourya2007-sketch](https://github.com/indreshmourya2007-sketch)
-- **💼 LinkedIn:** [linkedin.com/in/indresh-mourya](https://www.linkedin.com/in/indresh-mourya)
+- **💼 LinkedIn:** [linkedin.com/in/indreshmourya](https://www.linkedin.com/in/indreshmourya)
+- **📸 Instagram:** [@indresh_optimist](https://instagram.com/indresh_optimist)
 - **💬 WhatsApp:** [+91 75662 21905](https://wa.me/917566221905)
 - **📍 Location:** Indore, Madhya Pradesh, India
 

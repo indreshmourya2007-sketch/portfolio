@@ -141,10 +141,10 @@ export const PORTFOLIO_DATA = {
   },
 
   links: {
-    github: "https://github.com/indresh-mourya",
-    linkedin: "https://www.linkedin.com/in/indresh-mourya",
+    github: "https://github.com/indreshmourya2007-sketch",
+    linkedin: "https://www.linkedin.com/in/indreshmourya",
     whatsapp: "https://wa.me/917566221905",
-    instagram: "https://instagram.com/indresh_mourya",
+    instagram: "https://instagram.com/indresh_optimist",
     twitter: "https://twitter.com/indresh_dev",
     email: "mailto:indreshmourya2007@gmail.com",
   },
@@ -153,15 +153,15 @@ export const PORTFOLIO_DATA = {
     {
       id: "github",
       label: "GitHub",
-      href: "https://github.com/indresh-mourya",
-      handle: "@indresh-mourya",
+      href: "https://github.com/indreshmourya2007-sketch",
+      handle: "@indreshmourya2007-sketch",
       description: "Open source repositories & algorithms",
     },
     {
       id: "linkedin",
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/indresh-mourya",
-      handle: "in/indresh-mourya",
+      href: "https://www.linkedin.com/in/indreshmourya",
+      handle: "in/indreshmourya",
       description: "Professional network & career updates",
     },
     {
@@ -174,8 +174,8 @@ export const PORTFOLIO_DATA = {
     {
       id: "instagram",
       label: "Instagram",
-      href: "https://instagram.com/indresh_mourya",
-      handle: "@indresh_mourya",
+      href: "https://instagram.com/indresh_optimist",
+      handle: "@indresh_optimist",
       description: "Visual stories & behind the scenes",
     },
     {
@@ -540,10 +540,10 @@ export const PORTFOLIO_DATA = {
       summary: "An intelligent medical report analyzer converting complex lab biomarkers (CBC, Lipid, Thyroid, Diabetes) into layperson-friendly clinical insights using OCR, Groq LLaMA 3, Three.js 3D Bio-Core, and Chart.js analytics across 7 languages.",
       description:
         "Dr. Decode AI is an open medical informatics analyzer integrating Tesseract.js OCR and Groq LLaMA 3 70B reasoning. Features a real-time 3D Bio-Core molecular visualizer in Three.js, interactive Chart.js biomarker trends, Matter.js physics relaxation tool, multi-lingual translations in 7 languages, and geolocation-based healthcare specialist routing.",
-      demoUrl: "https://indreshmourya2007-sketch.github.io/Dr.Decode/",
+      demoUrl: "/drdecode",
       githubUrl: "https://github.com/indreshmourya2007-sketch/Dr.Decode",
       links: {
-        live: "https://indreshmourya2007-sketch.github.io/Dr.Decode/",
+        live: "/drdecode",
         github: "https://github.com/indreshmourya2007-sketch/Dr.Decode",
       },
       metrics: [
@@ -748,11 +748,11 @@ export const PORTFOLIO_DATA = {
       summary: "A real-time WebGPU particle runtime rendering 1,000,000+ physics particles at locked 120 FPS in modern browsers.",
       description:
         "High-density spatial simulation engine built with modern WebGPU compute pipelines and WGSL shaders. Demonstrates storage buffer ping-ponging, vector field advection, and spring physics without CPU overhead. Currently in active development.",
-      demoUrl: "https://github.com/indresh-mourya",
-      githubUrl: "https://github.com/indresh-mourya",
+      demoUrl: "https://github.com/indreshmourya2007-sketch",
+      githubUrl: "https://github.com/indreshmourya2007-sketch",
       links: {
-        live: "https://github.com/indresh-mourya",
-        github: "https://github.com/indresh-mourya",
+        live: "https://github.com/indreshmourya2007-sketch",
+        github: "https://github.com/indreshmourya2007-sketch",
       },
       metrics: [
         { label: "Throughput", value: "1.2M Particles" },
@@ -782,11 +782,11 @@ export const PORTFOLIO_DATA = {
       summary: "An infinite zoomable interface transforming linear AI conversations into dynamic, branching thought topologies.",
       description:
         "Re-imagines AI interaction as an infinite spatial canvas where prompts, code artifacts, and reasoning graphs exist as interactive nodes with smooth bezier linkages. Currently in active development staging.",
-      demoUrl: "https://github.com/indresh-mourya",
-      githubUrl: "https://github.com/indresh-mourya",
+      demoUrl: "https://github.com/indreshmourya2007-sketch",
+      githubUrl: "https://github.com/indreshmourya2007-sketch",
       links: {
-        live: "https://github.com/indresh-mourya",
-        github: "https://github.com/indresh-mourya",
+        live: "https://github.com/indreshmourya2007-sketch",
+        github: "https://github.com/indreshmourya2007-sketch",
       },
       metrics: [
         { label: "Render Time", value: "< 2ms/frame" },
@@ -897,7 +897,7 @@ export const PORTFOLIO_DATA = {
       description: "Intelligent medical report analyzer converting complex lab biomarkers into layperson insights with 3D Bio-Core visualizer in Three.js and translations in 7 languages.",
       tags: ["JavaScript", "Groq LLaMA 3", "Three.js", "Tesseract OCR", "Chart.js"],
       status: "Live",
-      link: "https://indreshmourya2007-sketch.github.io/Dr.Decode/",
+      link: "/drdecode",
     },
     {
       id: "satya-drishti-engine",

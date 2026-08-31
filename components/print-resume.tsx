@@ -25,9 +25,9 @@ export default function PrintResume() {
             <span>•</span>
             <span>Phone: <a href="tel:+917566221905" className="underline font-bold text-black">+91 75662 21905</a></span>
             <span>•</span>
-            <span>GitHub: <a href="https://github.com/indresh-mourya" className="underline font-bold text-black">github.com/indresh-mourya</a></span>
+            <span>GitHub: <a href="https://github.com/indreshmourya2007-sketch" className="underline font-bold text-black">github.com/indreshmourya2007-sketch</a></span>
             <span>•</span>
-            <span>LinkedIn: <a href="https://www.linkedin.com/in/indresh-mourya" className="underline font-bold text-black">linkedin.com/in/indresh-mourya</a></span>
+            <span>LinkedIn: <a href="https://www.linkedin.com/in/indreshmourya" className="underline font-bold text-black">linkedin.com/in/indreshmourya</a></span>
           </p>
         </header>
 
