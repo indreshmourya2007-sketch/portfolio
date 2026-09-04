@@ -162,6 +162,7 @@ Portfolio/
 - **📧 Email:** [indreshmourya2007@gmail.com](mailto:indreshmourya2007@gmail.com)
 - **🐙 GitHub:** [@indreshmourya2007-sketch](https://github.com/indreshmourya2007-sketch)
 - **💼 LinkedIn:** [linkedin.com/in/indreshmourya](https://www.linkedin.com/in/indreshmourya)
+- **𝕏 X (Twitter):** [@INDRESHbuilds](https://x.com/INDRESHbuilds)
 - **📸 Instagram:** [@indresh_optimist](https://instagram.com/indresh_optimist)
 - **💬 WhatsApp:** [+91 75662 21905](https://wa.me/917566221905)
 - **📍 Location:** Indore, Madhya Pradesh, India

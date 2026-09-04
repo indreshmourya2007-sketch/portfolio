@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: "Indresh — Software Developer & Student",
     description:
       "Personal portfolio of Indresh Mourya — Software Developer & B.Tech CSE Student at PIEMR.",
-    creator: "@indresh_dev",
+    creator: "@INDRESHbuilds",
   },
 };
 
@@ -75,7 +75,7 @@ export default function RootLayout({
     url: "https://indresh.dev",
     sameAs: [
       "https://github.com/indreshmourya2007-sketch",
-      "https://twitter.com/indresh_dev",
+      "https://x.com/INDRESHbuilds",
       "https://www.linkedin.com/in/indreshmourya",
       "https://instagram.com/indresh_optimist",
     ],

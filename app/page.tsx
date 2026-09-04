@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Preloader from "@/components/preloader";
 import GlassHero from "@/components/glass-hero";
 import Navigation from "@/components/navigation";
 import AboutSection from "@/components/about-section";
@@ -43,6 +44,9 @@ export default function Home() {
 
   return (
     <main className="w-full min-h-screen bg-[#edf5ff] dark:bg-[#070b12] text-[#0a0f18] dark:text-[#f1f5f9] transition-colors duration-300 relative selection:bg-[#0a0f18] selection:text-[#edf5ff] dark:selection:bg-[#f1f5f9] dark:selection:text-[#070b12]">
+      {/* Cinematic Editorial Preloader Entrance */}
+      <Preloader />
+
       {/* Floating Sticky Frosted Navigation Bar */}
       <Navigation onOpenCommand={() => setIsCommandOpen(true)} />
 

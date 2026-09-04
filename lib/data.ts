@@ -145,7 +145,7 @@ export const PORTFOLIO_DATA = {
     linkedin: "https://www.linkedin.com/in/indreshmourya",
     whatsapp: "https://wa.me/917566221905",
     instagram: "https://instagram.com/indresh_optimist",
-    twitter: "https://twitter.com/indresh_dev",
+    twitter: "https://x.com/INDRESHbuilds",
     email: "mailto:indreshmourya2007@gmail.com",
   },
 
@@ -181,8 +181,8 @@ export const PORTFOLIO_DATA = {
     {
       id: "twitter",
       label: "X / Twitter",
-      href: "https://twitter.com/indresh_dev",
-      handle: "@indresh_dev",
+      href: "https://x.com/INDRESHbuilds",
+      handle: "@INDRESHbuilds",
       description: "Thoughts on AI, WebGPU & systems",
     },
   ],
