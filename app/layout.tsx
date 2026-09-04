@@ -51,13 +51,25 @@ export const metadata: Metadata = {
       "Personal portfolio of Indresh Mourya — Software Developer & B.Tech CSE Student at PIEMR.",
     creator: "@INDRESHbuilds",
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Indresh Portfolio",
+  },
+  formatDetection: {
+    telephone: false,
+  },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#edf5ff",
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#edf5ff" },
+    { media: "(prefers-color-scheme: dark)", color: "#070b12" },
+  ],
 };
 
 export default function RootLayout({
