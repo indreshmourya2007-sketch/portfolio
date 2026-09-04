@@ -181,45 +181,58 @@ body {
   }
 }
 
-/* Entrance Animation Classes */
-.animate-nav-down {
-  opacity: 0;
-  animation: fadeDown 0.9s var(--ease-editorial) 0.2s forwards;
+@keyframes cursorBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
-.animate-line-1 {
-  opacity: 0;
-  animation: lineUp 0.9s var(--ease-editorial) 0.35s forwards;
-}
-
-.animate-line-2 {
-  opacity: 0;
-  animation: lineUp 0.9s var(--ease-editorial) 0.47s forwards;
-}
-
-.animate-line-3 {
-  opacity: 0;
-  animation: lineUp 0.9s var(--ease-editorial) 0.59s forwards;
-}
-
-.animate-intro-up {
-  opacity: 0;
-  animation: fadeUp 0.9s var(--ease-editorial) 0.72s forwards;
-}
-
-.animate-tagline-up {
-  opacity: 0;
-  animation: fadeUp 0.9s var(--ease-editorial) 0.84s forwards;
-}
-
-.animate-grid-fade {
-  opacity: 0;
-  animation: fadeUp 1.2s var(--ease-editorial) 0.1s forwards;
-}
-
+/* Base Hidden State Before Site Entrance */
+.animate-nav-down,
+.animate-line-1,
+.animate-line-2,
+.animate-line-3,
+.animate-intro-up,
+.animate-tagline-up,
+.animate-grid-fade,
 .animate-portrait-entrance {
   opacity: 0;
-  animation: entranceImageSlideUp 1.2s var(--ease-editorial) 0.12s forwards;
+}
+
+/* Entrance Animation Classes Triggered on Site Entrance */
+.site-entered .animate-nav-down {
+  animation: fadeDown 0.9s var(--ease-editorial) 0.15s forwards;
+}
+
+.site-entered .animate-line-1 {
+  animation: lineUp 0.9s var(--ease-editorial) 0.28s forwards;
+}
+
+.site-entered .animate-line-2 {
+  animation: lineUp 0.9s var(--ease-editorial) 0.4s forwards;
+}
+
+.site-entered .animate-line-3 {
+  animation: lineUp 0.9s var(--ease-editorial) 0.52s forwards;
+}
+
+.site-entered .animate-intro-up {
+  animation: fadeUp 0.9s var(--ease-editorial) 0.65s forwards;
+}
+
+.site-entered .animate-tagline-up {
+  animation: fadeUp 0.9s var(--ease-editorial) 0.78s forwards;
+}
+
+.site-entered .animate-grid-fade {
+  animation: fadeUp 1.2s var(--ease-editorial) 0.05s forwards;
+}
+
+.site-entered .animate-portrait-entrance {
+  animation: entranceImageSlideUp 1.2s var(--ease-editorial) 0.08s forwards;
 }
 
 @keyframes modalFadeIn {

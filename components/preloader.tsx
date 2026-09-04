@@ -5,26 +5,31 @@ import React, { useState, useEffect } from "react";
 export default function Preloader() {
   const [stage, setStage] = useState<0 | 1 | 2 | 3>(0);
   const [count, setCount] = useState<number>(0);
+  const [typedText, setTypedText] = useState<string>("");
 
   useEffect(() => {
     // Check if user prefers reduced motion
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mediaQuery.matches) {
+      document.documentElement.classList.add("site-entered");
       setStage(3);
       return;
     }
 
-    // Lock body scroll during preloader presentation
+    // Ensure site-entered is removed during preloader presentation
+    document.documentElement.classList.remove("site-entered");
+
+    // Lock body scroll during preloader
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    // Stage 0: Count from 0% to 100% over 1400ms using smooth cubic easing
-    const startTime = performance.now();
+    // STAGE 0: Count from 0% to 100% over 1400ms using smooth cubic easing
+    const countStartTime = performance.now();
     const countDuration = 1400;
-    let rafId: number;
+    let countRafId: number;
 
     const animateCount = (now: number) => {
-      const elapsed = now - startTime;
+      const elapsed = now - countStartTime;
       const progress = Math.min(elapsed / countDuration, 1);
       // Smooth ease-out cubic curve
       const ease = 1 - Math.pow(1 - progress, 3);
@@ -32,36 +37,66 @@ export default function Preloader() {
       setCount(currentVal);
 
       if (progress < 1) {
-        rafId = requestAnimationFrame(animateCount);
+        countRafId = requestAnimationFrame(animateCount);
       } else {
         setCount(100);
       }
     };
 
-    rafId = requestAnimationFrame(animateCount);
+    countRafId = requestAnimationFrame(animateCount);
 
-    // Stage 1 (Greeting): Transition at 1.5s
+    // STAGE 1 (Greeting & Typewriter): Starts at 1.4s
+    const fullGreeting = "hello.";
+    let typeRafId: number;
+
     const t1 = setTimeout(() => {
       setStage(1);
-    }, 1500);
 
-    // Stage 2 (Revealing): Transition at 2.2s (curtain splits open)
+      // Typewriter animation: 1.0 second duration (1000ms)
+      const typeStartTime = performance.now();
+      const typeDuration = 1000;
+
+      const animateTyping = (now: number) => {
+        const elapsed = now - typeStartTime;
+        const progress = Math.min(elapsed / typeDuration, 1);
+        const charCount = Math.min(
+          fullGreeting.length,
+          Math.max(1, Math.ceil(progress * fullGreeting.length))
+        );
+        setTypedText(fullGreeting.slice(0, charCount));
+
+        if (progress < 1) {
+          typeRafId = requestAnimationFrame(animateTyping);
+        } else {
+          setTypedText(fullGreeting);
+        }
+      };
+
+      typeRafId = requestAnimationFrame(animateTyping);
+    }, 1400);
+
+    // STAGE 2 (Revealing & Site Entrance):
+    // 1400ms (count) + 1000ms (typing) + 1100ms (watch time) = 3500ms
     const t2 = setTimeout(() => {
       setStage(2);
+      // Trigger site entrance animations across the hero and page
+      document.documentElement.classList.add("site-entered");
       document.body.style.overflow = prevOverflow;
-    }, 2200);
+    }, 3500);
 
-    // Stage 3 (Unmounted): Completely remove from DOM at 3.05s
+    // STAGE 3 (Unmounted): 3500ms + 850ms (reveal transition) = 4350ms
     const t3 = setTimeout(() => {
       setStage(3);
-    }, 3050);
+    }, 4350);
 
     return () => {
-      cancelAnimationFrame(rafId);
+      cancelAnimationFrame(countRafId);
+      cancelAnimationFrame(typeRafId);
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);
       document.body.style.overflow = prevOverflow;
+      document.documentElement.classList.add("site-entered");
     };
   }, []);
 
@@ -90,7 +125,7 @@ export default function Preloader() {
         willChange: "clip-path, opacity",
       }}
     >
-      {/* Subtle Technical Grid Background Texture */}
+      {/* Subtle Blueprint Grid Pattern */}
       <div
         className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-25"
         style={{
@@ -102,52 +137,75 @@ export default function Preloader() {
         }}
       />
 
-      {/* Editorial Header & Corner Coordinates */}
-      <div className="absolute top-6 left-6 sm:top-10 sm:left-10 flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase text-[#0a0f18]/50 dark:text-[#f1f5f9]/50">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#2d68c4] dark:bg-[#60a5fa] animate-pulse" />
+      {/* Atmospheric Soft Center Glow */}
+      <div
+        className="absolute w-[500px] h-[500px] rounded-full bg-blue-500/5 dark:bg-blue-400/10 blur-[100px] pointer-events-none"
+        aria-hidden="true"
+      />
+
+      {/* Editorial Corner Coordinates & Status Tags */}
+      <div className="absolute top-6 left-6 sm:top-10 sm:left-10 flex items-center gap-2.5 font-mono text-[11px] tracking-widest uppercase text-[#0a0f18]/60 dark:text-[#f1f5f9]/60">
+        <span className="w-2 h-2 rounded-full bg-[#2d68c4] dark:bg-[#60a5fa] animate-ping" />
         <span>SYS // INITIALIZE</span>
       </div>
 
-      <div className="absolute top-6 right-6 sm:top-10 sm:right-10 font-mono text-[11px] tracking-widest uppercase text-[#0a0f18]/40 dark:text-[#f1f5f9]/40">
-        INDRESH.DEV
+      <div className="absolute top-6 right-6 sm:top-10 sm:right-10 flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase text-[#0a0f18]/50 dark:text-[#f1f5f9]/50">
+        <span>INDRESH.DEV</span>
+        <span className="text-[#2d68c4] dark:text-[#60a5fa]">//</span>
+        <span>2026</span>
       </div>
 
-      <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 font-mono text-[10px] sm:text-[11px] tracking-wider text-[#0a0f18]/40 dark:text-[#f1f5f9]/40">
-        22°43&apos;N 75°52&apos;E
+      <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 flex items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-wider text-[#0a0f18]/50 dark:text-[#f1f5f9]/50">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />
+        <span>22°43&apos;N 75°52&apos;E [INDORE]</span>
       </div>
 
-      <div className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 font-mono text-[10px] sm:text-[11px] tracking-widest uppercase text-[#0a0f18]/40 dark:text-[#f1f5f9]/40">
-        PORTFOLIO v2.6
+      <div className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 flex items-center gap-2 font-mono text-[10px] sm:text-[11px] tracking-widest uppercase text-[#0a0f18]/50 dark:text-[#f1f5f9]/50">
+        {/* Equalizer frequency micro-bars */}
+        <div className="flex items-end gap-0.5 h-3">
+          <span className="w-0.5 h-1.5 bg-[#2d68c4] dark:bg-[#60a5fa] animate-pulse" />
+          <span className="w-0.5 h-3 bg-[#2d68c4] dark:bg-[#60a5fa] animate-[pulse_0.7s_ease-in-out_infinite]" />
+          <span className="w-0.5 h-2 bg-[#2d68c4] dark:bg-[#60a5fa] animate-[pulse_0.5s_ease-in-out_infinite_0.2s]" />
+          <span className="w-0.5 h-2.5 bg-[#2d68c4] dark:bg-[#60a5fa] animate-[pulse_0.9s_ease-in-out_infinite_0.1s]" />
+        </div>
+        <span>ENGINE_V2.6</span>
       </div>
 
       {/* Central Interactive Content Display */}
       <div className="relative w-80 h-80 sm:w-96 sm:h-96 flex items-center justify-center">
-        {/* STAGE 0: Percentage Counter & Spinning SVG Technical Ring */}
+        {/* ============================================================ */}
+        {/* STAGE 0: Technical Counter & HUD Precision Rings (0s - 1.4s) */}
+        {/* ============================================================ */}
         <div
           className="absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 ease-out"
           style={{
             opacity: stage === 0 ? 1 : 0,
-            transform: stage === 0 ? "scale(1)" : "scale(0.95)",
+            transform: stage === 0 ? "scale(1)" : "scale(0.94)",
             pointerEvents: stage === 0 ? "auto" : "none",
           }}
         >
-          {/* Animated SVG Technical Circles */}
+          {/* Animated SVG HUD Circles */}
           <div className="absolute inset-0 flex items-center justify-center">
-            {/* Spinning Dashed Outer Accent Ring */}
+            {/* Spinning Dashed Outer Orbital Ring */}
             <svg
-              className="absolute w-[260px] h-[260px] sm:w-[300px] sm:h-[300px] animate-[spin_12s_linear_infinite]"
-              viewBox="0 0 300 300"
+              className="absolute w-[270px] h-[270px] sm:w-[310px] sm:h-[310px] animate-[spin_10s_linear_infinite]"
+              viewBox="0 0 310 310"
               fill="none"
             >
               <circle
-                cx="150"
-                cy="150"
-                r="135"
+                cx="155"
+                cy="155"
+                r="145"
                 stroke="currentColor"
                 strokeWidth="1"
                 strokeDasharray="4 8"
-                className="text-[#173255]/15 dark:text-[#a0c5f0]/15"
+                className="text-[#173255]/15 dark:text-[#a0c5f0]/20"
               />
+              {/* Outer Cardinal Tick Marks */}
+              <circle cx="155" cy="10" r="2" fill="currentColor" className="text-[#2d68c4] dark:text-[#60a5fa]" />
+              <circle cx="300" cy="155" r="2" fill="currentColor" className="text-[#2d68c4] dark:text-[#60a5fa]" />
+              <circle cx="155" cy="300" r="2" fill="currentColor" className="text-[#2d68c4] dark:text-[#60a5fa]" />
+              <circle cx="10" cy="155" r="2" fill="currentColor" className="text-[#2d68c4] dark:text-[#60a5fa]" />
             </svg>
 
             {/* Main Progress Indicator Ring */}
@@ -165,13 +223,13 @@ export default function Preloader() {
                 strokeWidth="1"
                 className="text-[#173255]/10 dark:text-[#a0c5f0]/15"
               />
-              {/* Active Progress Ring */}
+              {/* Active Dynamic Progress Ring */}
               <circle
                 cx="120"
                 cy="120"
                 r={radius}
                 stroke="currentColor"
-                strokeWidth="1.5"
+                strokeWidth="1.75"
                 strokeDasharray={circumference}
                 strokeDashoffset={strokeDashoffset}
                 strokeLinecap="round"
@@ -185,15 +243,18 @@ export default function Preloader() {
             <span className="font-mono text-6xl sm:text-7xl md:text-8xl font-normal tracking-tight text-[#0a0f18] dark:text-[#f1f5f9] tabular-nums">
               {count}%
             </span>
-            <span className="mt-2 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-[#0a0f18]/50 dark:text-[#f1f5f9]/50">
-              loading system
-            </span>
+            <div className="mt-3 flex items-center gap-2 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-[#0a0f18]/60 dark:text-[#f1f5f9]/60">
+              <span className="w-1 h-1 rounded-full bg-[#2d68c4] dark:bg-[#60a5fa] animate-ping" />
+              <span>loading system</span>
+            </div>
           </div>
         </div>
 
-        {/* STAGE 1: Editorial Greeting */}
+        {/* ========================================================================= */}
+        {/* STAGE 1: Typewriter Greeting & Extended Watch Experience (1.4s - 3.5s)    */}
+        {/* ========================================================================= */}
         <div
-          className="absolute inset-0 flex flex-col items-center justify-center transition-all duration-600 ease-out"
+          className="absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 ease-out"
           style={{
             opacity: stage === 1 ? 1 : 0,
             transform:
@@ -201,16 +262,26 @@ export default function Preloader() {
                 ? "scale(1) translateY(0px)"
                 : stage === 0
                 ? "scale(0.96) translateY(12px)"
-                : "scale(1.04) translateY(-8px)",
+                : "scale(1.04) translateY(-10px)",
             pointerEvents: stage === 1 ? "auto" : "none",
           }}
         >
           <div className="flex flex-col items-center text-center px-4">
-            <h1 className="font-sans text-5xl sm:text-7xl md:text-8xl font-medium tracking-tight text-[#0a0f18] dark:text-[#f1f5f9]">
-              hello<span className="text-[#2d68c4] dark:text-[#60a5fa]">.</span>
+            {/* Typewriter Greeting Text in Albert Sans */}
+            <h1 className="font-sans text-6xl sm:text-7xl md:text-8xl font-medium tracking-tight text-[#0a0f18] dark:text-[#f1f5f9] flex items-center justify-center">
+              <span>{typedText}</span>
+              {/* Sleek Blinking Editorial Cursor */}
+              <span
+                className="inline-block w-[3px] sm:w-[4px] h-[0.75em] bg-[#2d68c4] dark:bg-[#60a5fa] ml-1.5 align-middle rounded-full"
+                style={{
+                  animation: "cursorBlink 0.8s infinite ease-in-out",
+                }}
+              />
             </h1>
-            <div className="mt-3 flex items-center gap-2 font-mono text-[11px] sm:text-xs tracking-[0.25em] uppercase text-[#0a0f18]/60 dark:text-[#f1f5f9]/60">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />
+
+            {/* Status Pill Badge with Emerald Beacon */}
+            <div className="mt-4 flex items-center gap-2 px-3 py-1 rounded-full bg-[#173255]/5 dark:bg-white/10 border border-[#173255]/10 dark:border-white/10 font-mono text-[11px] sm:text-xs tracking-[0.2em] uppercase text-[#0a0f18]/70 dark:text-[#f1f5f9]/70">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse" />
               <span>system.ready</span>
             </div>
           </div>
