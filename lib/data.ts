@@ -135,7 +135,7 @@ export const PORTFOLIO_DATA = {
     stats: [
       { value: "Top 10%", label: "Global Replit Agent Dev" },
       { value: "5x", label: "Google Cloud Certified" },
-      { value: "33+", label: "Credly Badges & NASA" },
+      { value: "33+", label: "Credly Badges" },
       { value: "12+", label: "Engineered Projects" },
     ],
   },
