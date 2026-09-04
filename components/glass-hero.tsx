@@ -292,13 +292,16 @@ export default function GlassHero() {
               Lab
             </a>
 
-            {/* Desktop Resume Print Trigger */}
-            <button
-              onClick={() => window.print()}
+            {/* Desktop Resume Download / View */}
+            <a
+              href="/Indresh_Mourya_Resume.pdf"
+              download="Indresh_Mourya_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-mono text-xs uppercase tracking-wider text-[#0a0f18] dark:text-white hover:opacity-70 transition-opacity py-1 px-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0a0f18] dark:focus-visible:outline-white rounded font-medium cursor-pointer"
             >
               Resume [PDF]
-            </button>
+            </a>
 
             {/* Search command button */}
             <button
@@ -437,9 +440,12 @@ export default function GlassHero() {
               </svg>
             </a>
 
-            <button
-              onClick={() => window.print()}
-              className="pill-button font-mono text-xs uppercase tracking-wider font-medium px-5 py-3 rounded-full min-h-[44px] inline-flex items-center justify-center gap-2 cursor-pointer group text-[#0a0f18] dark:text-white"
+            <a
+              href="/Indresh_Mourya_Resume.pdf"
+              download="Indresh_Mourya_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pill-button font-mono text-xs uppercase tracking-wider font-medium px-5 py-3 rounded-full min-h-[44px] inline-flex items-center justify-center gap-2 cursor-pointer group text-[#0a0f18] dark:text-white hover:scale-105 transition-transform"
             >
               <svg
                 width="13"
@@ -460,7 +466,7 @@ export default function GlassHero() {
                 <line x1="15" y1="15" x2="12" y2="18" />
               </svg>
               <span>Resume [PDF]</span>
-            </button>
+            </a>
           </div>
         </div>
       </div>

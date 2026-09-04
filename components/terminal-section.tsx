@@ -155,13 +155,16 @@ export default function TerminalSection() {
               ✓ Loaded 1-Page ATS Executive Resume Summary (Indresh Mourya).
             </div>
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => window.print()}
-                className="px-3.5 py-1.5 rounded-lg bg-[#2d68c4] text-white hover:bg-[#20529d] font-bold inline-flex items-center gap-1.5 cursor-pointer shadow-xs"
+              <a
+                href="/Indresh_Mourya_Resume.pdf"
+                download="Indresh_Mourya_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3.5 py-1.5 rounded-lg bg-[#2d68c4] text-white hover:bg-[#20529d] font-bold inline-flex items-center gap-1.5 cursor-pointer shadow-xs transition-colors"
               >
-                <span>Download / Print Resume (PDF)</span>
+                <span>Download Resume (PDF)</span>
                 <span>⬇</span>
-              </button>
+              </a>
             </div>
           </div>
         );

@@ -103,8 +103,11 @@ export default function AboutSection() {
                 </p>
               </div>
 
-              <button
-                onClick={() => window.print()}
+              <a
+                href="/Indresh_Mourya_Resume.pdf"
+                download="Indresh_Mourya_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="pill-button-primary font-mono text-xs uppercase tracking-wider font-semibold px-4 py-2.5 rounded-full inline-flex items-center gap-1.5 flex-shrink-0 cursor-pointer shadow-sm hover:scale-105 transition-transform"
               >
                 <svg
@@ -125,7 +128,7 @@ export default function AboutSection() {
                   <line x1="15" y1="15" x2="12" y2="18" />
                 </svg>
                 <span>Get PDF</span>
-              </button>
+              </a>
             </div>
           </div>
         </div>

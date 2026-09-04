@@ -68,11 +68,17 @@ export default function CommandMenu({ isOpen, onClose, onSelectProject }: Comman
       icon: theme === "dark" ? "☀️" : "🌙",
     },
     {
-      id: "print-resume",
-      title: "Print Resume [ATS-Friendly PDF]",
+      id: "download-resume",
+      title: "Download Resume [ATS-Friendly PDF]",
       action: () => {
         onClose();
-        window.print();
+        const link = document.createElement("a");
+        link.href = "/Indresh_Mourya_Resume.pdf";
+        link.download = "Indresh_Mourya_Resume.pdf";
+        link.target = "_blank";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       },
       icon: "📄",
     },

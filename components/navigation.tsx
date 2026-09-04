@@ -228,15 +228,17 @@ export default function Navigation({ onOpenCommand }: NavigationProps) {
             </div>
 
             <div className="pt-2 border-t border-[#0a0f18]/15 dark:border-white/15 flex flex-col gap-2">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  window.print();
-                }}
-                className="w-full font-mono text-xs uppercase tracking-wider py-3 rounded-xl border border-[#0a0f18]/20 dark:border-white/20 text-[#0a0f18] dark:text-white text-center font-medium cursor-pointer"
+              <a
+                href="/Indresh_Mourya_Resume.pdf"
+                download="Indresh_Mourya_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full font-mono text-xs uppercase tracking-wider py-3 rounded-xl border border-[#0a0f18]/20 dark:border-white/20 text-[#0a0f18] dark:text-white text-center font-medium cursor-pointer inline-flex items-center justify-center gap-1.5"
               >
-                Resume [PDF]
-              </button>
+                <span>Resume [PDF]</span>
+                <span>⬇</span>
+              </a>
               <a
                 href={PORTFOLIO_DATA.links.whatsapp}
                 target="_blank"

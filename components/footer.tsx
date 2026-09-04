@@ -75,9 +75,12 @@ export default function Footer() {
               <span>Connect on LinkedIn</span>
               <span>↗</span>
             </a>
-            <button
-              onClick={() => window.print()}
-              className="pill-button-primary font-mono text-xs uppercase tracking-wider font-semibold px-6 py-3.5 rounded-full inline-flex items-center gap-2 cursor-pointer shadow-md"
+            <a
+              href="/Indresh_Mourya_Resume.pdf"
+              download="Indresh_Mourya_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pill-button-primary font-mono text-xs uppercase tracking-wider font-semibold px-6 py-3.5 rounded-full inline-flex items-center gap-2 cursor-pointer shadow-md hover:scale-105 transition-transform"
             >
               <svg
                 width="14"
@@ -97,7 +100,7 @@ export default function Footer() {
                 <line x1="15" y1="15" x2="12" y2="18" />
               </svg>
               <span>Resume [PDF]</span>
-            </button>
+            </a>
           </div>
         </div>
 
